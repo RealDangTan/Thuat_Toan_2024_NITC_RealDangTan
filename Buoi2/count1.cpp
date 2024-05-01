@@ -14,4 +14,4 @@ int differenceStringTrie(string s){
 int main(){
     string s;cin>>s;
     cout<<differenceStringTrie(s)<<endl;
-}
+    }

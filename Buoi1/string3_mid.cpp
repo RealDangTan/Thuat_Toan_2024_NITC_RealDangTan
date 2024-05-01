@@ -2,24 +2,35 @@
 using namespace std;
 
 string rule(string s, string &res){
+    while(s[0]>='a' && s[0]<='z'&&s[0]>='A' && s[0]<='Z') s.erase(0,1);
     res+=toupper(s[0]);
 
     for(int i = 1; i < s.size(); i++){
         if(s[i]<='9' && s[i]>='0'){
-            res += s[i];
+            res += s[i];continue;
         }
         else if(s[i]>='a' && s[i]<='z'){
-            res += s[i];
+            res += s[i];continue;
         }
         else if(s[i]>='A' && s[i]<='Z'){
-            res += s[i]+32;
+            res += s[i]+32;continue;
         }
-        else if(s[i]==' '&&s[i+1]==' ') {i++;}
-        else if(s[i] == ' ' && s[i]=='?' && s[i]==','){
-            res += s[i];
+        else if(s[i]==',') {
+            res+=", "; continue;
         }
-        else res += ' ';
+
+        //space rules
+        while(s[i]==' ') break;
+
+
+
+        res += ' ';
     }
+
+    while (!s.empty() && (s.back() == ' ' || s.back() == ',')) {
+        s.pop_back();
+    }    
+    res+='?';
     return res;
 }
 
